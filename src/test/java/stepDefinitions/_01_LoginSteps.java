@@ -18,11 +18,12 @@ public class _01_LoginSteps {
     @Given("^Navigate to basqar$")
     public void navigateToBasqar() {
         driver = Driver.getDriver();
-        driver.get("https://test.basqar.techno.study/");
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://test.basqar.techno.study/");
         driver.manage().deleteAllCookies();
+
     }
 
     @When("^User send the keys in the dialog content class$")

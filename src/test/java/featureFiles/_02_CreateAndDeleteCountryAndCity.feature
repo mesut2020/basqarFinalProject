@@ -26,14 +26,12 @@ Feature: Create and Delete Functionality for Countries and Cities
     And User click on the element in the dialog content class
       | saveButton |
 
-    Then User should see success/error message
-      | successfully |
+    Then User should see "successfully created" message
 
     When User delete value
       | Group3Country5 |
 
-    Then User should see success/error message
-      | successfully |
+    Then User should see "successfully deleted" message
 
 
   Scenario: Create and Delete a City
@@ -43,8 +41,10 @@ Feature: Create and Delete Functionality for Countries and Cities
       | cities     |
 
     And User click on the element in the dialog content class
-      | addButton |
-      | country   |
+      | addButton     |
+      | country       |
+      | randomCountry |
+
 
     And User send the keys in the dialog content class
       | name | Group3City5 |
@@ -52,14 +52,12 @@ Feature: Create and Delete Functionality for Countries and Cities
     And User click on the element in the dialog content class
       | saveButton |
 
-    Then User should see success/error message
-      | successfully |
+    Then User should see "successfully created" message
 
     When User delete value
       | Group3City5 |
 
-    Then User should see success/error message
-      | successfully |
+    Then User should see "successfully deleted" message
 
 
   Scenario: Create and Delete a Country and a city
@@ -78,15 +76,16 @@ Feature: Create and Delete Functionality for Countries and Cities
     And User click on the element in the dialog content class
       | saveButton |
 
-    Then User should see success/error message
-      | successfully |
+    Then User should see "successfully created" message
+
 
     When User click on the element in the leftNav class
-      | cities     |
+      | cities |
 
     And User click on the element in the dialog content class
-      | addButton |
-      | country   |
+      | addButton      |
+      | country        |
+      | Group3Country5 |
 
     And User send the keys in the dialog content class
       | name | Group3City5 |
@@ -94,14 +93,13 @@ Feature: Create and Delete Functionality for Countries and Cities
     And User click on the element in the dialog content class
       | saveButton |
 
-    Then User should see success/error message
-      | successfully |
+    Then User should see "successfully created" message
+
 
     When User click on the element in the leftNav class
-      | countries  |
+      | countries |
 
     When User delete value
       | Group3Country5 |
 
-    Then User should see success/error message
-      | error |
+    Then User should see "error" message

@@ -55,7 +55,8 @@ public class _Parent {
         waitUntilVisible(element);
         //scrollToElement(element);
         String actualText = element.getText();
-        System.out.println(actualText);
+        System.out.println("actualText:"+actualText);
+        System.out.println("expectedText:"+expectedText);
         Assert.assertTrue(actualText.toLowerCase().contains(expectedText.toLowerCase()));
     }
 

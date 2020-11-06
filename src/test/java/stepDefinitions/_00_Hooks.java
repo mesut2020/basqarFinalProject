@@ -18,7 +18,6 @@ public class _00_Hooks {
     public void after(Scenario scenario){
         System.out.println(scenario.getName() + " : " + scenario.getStatus());
 
-
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

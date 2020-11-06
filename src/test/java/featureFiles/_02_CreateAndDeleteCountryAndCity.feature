@@ -2,7 +2,7 @@ Feature: Create and Delete Functionality for Countries and Cities
 
   Background:
     Given Navigate to basqar
-    When User sending the keys in the dialog content class
+    When User send the keys in the dialog content class
       | username | daulet2030@gmail.com |
       | password | TechnoStudy123@      |
     And User click on the element in the dialog content class
@@ -19,7 +19,7 @@ Feature: Create and Delete Functionality for Countries and Cities
     And User click on the element in the dialog content class
       | addButton |
 
-    And User sending the keys in the dialog content class
+    And User send the keys in the dialog content class
       | name | Group3Country5 |
       | code | 123            |
 
@@ -46,7 +46,7 @@ Feature: Create and Delete Functionality for Countries and Cities
       | addButton |
       | country   |
 
-    And User sending the keys in the dialog content class
+    And User send the keys in the dialog content class
       | name | Group3City5 |
 
     And User click on the element in the dialog content class
@@ -71,7 +71,7 @@ Feature: Create and Delete Functionality for Countries and Cities
     And User click on the element in the dialog content class
       | addButton |
 
-    And User sending the keys in the dialog content class
+    And User send the keys in the dialog content class
       | name | Group3Country5 |
       | code | 123            |
 
@@ -88,7 +88,7 @@ Feature: Create and Delete Functionality for Countries and Cities
       | addButton |
       | country   |
 
-    And User sending the keys in the dialog content class
+    And User send the keys in the dialog content class
       | name | Group3City5 |
 
     And User click on the element in the dialog content class

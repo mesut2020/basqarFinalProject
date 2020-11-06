@@ -25,8 +25,8 @@ public class _01_LoginSteps {
         driver.manage().deleteAllCookies();
     }
 
-    @When("^User sending the keys in the dialog content class$")
-    public void userSendingTheKeysInTheDialogContentClass(DataTable elements) {
+    @When("^User send the keys in the dialog content class$")
+    public void userSendTheKeysInTheDialogContentClass(DataTable elements) {
         List<List<String>> elementsNameAndValue = elements.asLists(String.class);
         for (int i = 0; i < elementsNameAndValue.size(); i++) {
             dialogContent.findElementAndSendKeysFunction(elementsNameAndValue.get(i).get(0), elementsNameAndValue.get(i).get(1));

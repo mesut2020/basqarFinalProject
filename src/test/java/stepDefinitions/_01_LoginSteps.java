@@ -45,6 +45,7 @@ public class _01_LoginSteps {
     @Then("^User should login successfully$")
     public void userShouldLoginSuccessfully() {
         dialogContent.findElementAndFindVerifyContainsText("dashboard", "dashboard");
+        System.out.println("Login to basqar succesfully");
     }
 
 }

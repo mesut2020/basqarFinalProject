@@ -3,15 +3,13 @@ package stepDefinitions;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import pages._Parent;
 import utilities.Driver;
 
 public class _00_Hooks {
 
     @Before
     public void beforeClass(Scenario scenario){
-        System.out.println(scenario.getName() + " has been started");
-
+        System.out.println(scenario.getName() + " has been started...");
     }
 
     @After
@@ -23,7 +21,6 @@ public class _00_Hooks {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         Driver.quitDriver();
     }
 

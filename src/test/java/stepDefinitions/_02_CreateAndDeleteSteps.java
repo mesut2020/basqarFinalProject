@@ -9,7 +9,7 @@ import pages.LeftNav;
 
 import java.util.List;
 
-public class CreateAndDeleteSteps {
+public class _02_CreateAndDeleteSteps {
     DialogContent dialogContent= new DialogContent();
     LeftNav leftNav = new LeftNav();
 
@@ -21,13 +21,18 @@ public class CreateAndDeleteSteps {
         }
     }
 
-    @When("^User delete value$")
-    public void userDeleteValue(DataTable values) {
-        List<String> valuesList = values.asList(String.class);
-        for (int i = 0; i < valuesList.size(); i++) {
-            dialogContent.deleteItemFunction(valuesList.get(i));
+//    @When("^User delete value$")
+//    public void userDeleteValue(DataTable values) {
+//        List<String> valuesList = values.asList(String.class);
+//        for (int i = 0; i < valuesList.size(); i++) {
+//            dialogContent.deleteItemFunction(valuesList.get(i));
+//
+//        }
+//    }
 
-        }
+    @When("^User delete \"([^\"]*)\"$")
+    public void userDelete(String value) {
+        dialogContent.deleteItemFunction(value);
     }
 
     @Then("^User should see \"([^\"]*)\" message$")
@@ -35,4 +40,6 @@ public class CreateAndDeleteSteps {
         dialogContent.findElementAndFindVerifyContainsText("success/error",value);
 
     }
+
+
 }

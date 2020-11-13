@@ -1,4 +1,4 @@
-Feature: Create and Delete Functionality for Countries and Cities
+Feature: Create and Delete Functionality for Subject Categories
 
   Background:
     Given Navigate to basqar
@@ -10,83 +10,68 @@ Feature: Create and Delete Functionality for Countries and Cities
       | gotItBtn    |
     Then User should login successfully
 
-  Scenario: Create and Delete a Country
+  Scenario: Create and Delete a Subject Category
     When User click on the element in the leftNav class
-      | setup      |
-      | parameters |
-      | countries  |
+      | education         |
+      | setupEducation    |
+      | subjectCategories |
 
     And User click on the element in the dialog content class
       | addButton |
 
     And User send the keys in the dialog content class
-      | name | MngMongolia |
-      | code | 169         |
+      | name | Science02 |
+      | code | 102       |
 
     And User click on the element in the dialog content class
       | saveButton |
 
     Then User should see "successfully created" message
 
-    When User delete "MngMongolia"
+    When User delete "Science02"
 
     Then User should see "successfully deleted" message
 
 
-  Scenario: Create and Delete a City
+  Scenario: Create and Delete a Subject
     When User click on the element in the leftNav class
-      | setup      |
-      | parameters |
-      | cities     |
-
-    And User click on the element in the dialog content class
-      | addButton     |
-      | country       |
-      | randomSelect |
-
-
-    And User send the keys in the dialog content class
-      | name | Darkhan |
-
-    And User click on the element in the dialog content class
-      | saveButton |
-
-    Then User should see "successfully created" message
-
-    When User delete "Darkhan"
-
-    Then User should see "successfully deleted" message
-
-
-  Scenario: Create a Country and a city and delete Country
-    When User click on the element in the leftNav class
-      | setup      |
-      | parameters |
-      | countries  |
+      | education      |
+      | setupEducation |
+      | subjects       |
 
     And User click on the element in the dialog content class
       | addButton |
 
     And User send the keys in the dialog content class
-      | name | MngMongolia |
-      | code | 169         |
+      | name | Chemistry102 |
+      | code | 102102       |
 
     And User click on the element in the dialog content class
-      | saveButton |
+      | subjectCategory |
+      | randomSelect    |
+      | style           |
+      | randomSelect    |
+      | saveButton      |
 
     Then User should see "successfully created" message
 
+    When User delete "Chemistry102"
 
+    Then User should see "successfully deleted" message
+
+
+  Scenario: Create a Subject Category and a Subject and try to delete a Subject Category
     When User click on the element in the leftNav class
-      | cities |
+      | education         |
+      | setupEducation    |
+      | subjectCategories |
 
     And User click on the element in the dialog content class
-      | addButton   |
-      | country     |
-      | MngMongolia |
+      | addButton |
 
     And User send the keys in the dialog content class
-      | name | Darkhan |
+      | name | Science02 |
+      | code | 102       |
 
     And User click on the element in the dialog content class
       | saveButton |
@@ -95,19 +80,37 @@ Feature: Create and Delete Functionality for Countries and Cities
 
 
     When User click on the element in the leftNav class
-      | countries |
+      | subjects |
 
-    And User delete "MngMongolia"
+    And User click on the element in the dialog content class
+      | addButton |
+
+    And User send the keys in the dialog content class
+      | name | Chemistry102 |
+      | code | 102102       |
+
+    And User click on the element in the dialog content class
+      | subjectCategory |
+      | Science02       |
+      | style           |
+      | randomSelect    |
+      | saveButton      |
+
+    Then User should see "successfully created" message
+
+# Parent daki scroll dan dolayi burayi goremedi
+    When User click on the element in the leftNav class
+      | subjectCategories |
+
+    When User delete "Science02"
 
     Then User should see "error" message
 
-#    the following codes are to delete city and country to add them again
+#    Silinmeyen subject category ve subject silindi
     When User click on the element in the leftNav class
-      | cities |
-
-    Then User delete "Darkhan"
+      | subjects |
+    Then User delete "Chemistry102"
 
     When User click on the element in the leftNav class
-      | countries |
-
-    Then User delete "MngMongolia"
+      | subjectCategories |
+    When User delete "Science02"

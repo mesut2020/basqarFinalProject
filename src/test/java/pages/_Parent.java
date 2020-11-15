@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utilities.Driver;
@@ -37,9 +38,9 @@ public class _Parent {
     }
 
     public void clickFunction(WebElement element) {
-        //waitUntilVisible();
-        waitUntilClickable(element);
+        waitUntilVisible(element);
         scrollToElement(element);
+        waitUntilClickable(element);
         element.click();
     }
 
@@ -50,19 +51,19 @@ public class _Parent {
         element.sendKeys(value);
     }
 
-    public void sendKeysFunction(List<WebElement> elementsList, String value) {
+    public void fillElementsListWithRandomValue(List<WebElement> elementsList, String value) {
         Actions actions = new Actions(driver);
         actions.click(elementsList.get(0)).build().perform();
         for (int i = 0; i < elementsList.size(); i++) {
-           //sendKeysFunction(elemenstList.get(i), value + "*" + (Math.random()*1+1) );
-            actions.sendKeys(value + "*" + (Math.random()*1+1) + Keys.TAB+Keys.TAB).build().perform();
+            actions.sendKeys(value + "*" + (Math.random() * 1 + 1) + Keys.TAB + Keys.TAB).build().perform();
         }
         actions.sendKeys(Keys.ENTER).build().perform();
     }
 
     public void verifyElementContainsText(WebElement element, String expectedText) {
-        waitUntilVisible(element);
-        //scrollToElement(element);
+        //waitUntilVisible(element);
+        waitUntilClickable(element);
+        scrollToElement(element);
         String actualText = element.getText();
         System.out.println("actualText:" + actualText);
         System.out.println("expectedText:" + expectedText);
@@ -70,8 +71,30 @@ public class _Parent {
     }
 
     public WebElement randomSelectFromList(List<WebElement> elementsList) {
-        return elementsList.get((int)(Math.random() * elementsList.size()));
+        return elementsList.get((int) (Math.random() * elementsList.size()));
     }
 
+    public WebElement selectItemFromList(List<WebElement> elementsList, String value) {
+        int i=elementsList.size()-1;
+        for ( ; i >=0; i--) {
+            if (elementsList.get(i).getText().equalsIgnoreCase(value)) {
+                System.out.println("selected option:" + elementsList.get(i).getText());
+                break;
+            }
+        }
+        return elementsList.get(i);
+    }
+
+    public int findIndexOfElementFromList(List<WebElement> elementsList, String value, WebElement searchName, WebElement searchButton) {
+        for (int i=0 ; i <elementsList.size(); i++) {
+            if (elementsList.get(i).getText().equalsIgnoreCase(value)) {
+                System.out.println(elementsList.get(i).getText() + " has been found...");
+                return i;
+            }
+        }
+            sendKeysFunction(searchName, value);
+            clickFunction(searchButton);
+            return 0;
+    }
 
 }

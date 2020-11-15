@@ -20,7 +20,7 @@ Feature: Create, Edit and Delete Functionality for Position Salary
       | addButton |
 
     And User send the keys in the dialog content class
-      | name | Expert, Assistant |
+      | namePositionSalary | Expert, Assistant |
 
     And User click on the element in the dialog content class
       | saveButton |
@@ -30,7 +30,7 @@ Feature: Create, Edit and Delete Functionality for Position Salary
     When User edit "Expert, Assistant"
 
     And User send the keys in the dialog content class
-      | name | editedExpert, Assistant |
+      | namePositionSalary | editedExpert, Assistant |
 
     And User click on the element in the dialog content class
       | saveButton |
@@ -52,8 +52,8 @@ Feature: Create, Edit and Delete Functionality for Position Salary
       | addButton |
 
     And User send the keys in the dialog content class
-      | namePositionSalary | Vice Director |
-      | shortName          | V.Dir         |
+      | name      | Vice Director |
+      | shortName | V.Dir         |
 
     And User click on the element in the dialog content class
       | saveButton |
@@ -63,8 +63,8 @@ Feature: Create, Edit and Delete Functionality for Position Salary
     When User edit "Vice Director"
 
     And User send the keys in the dialog content class
-      | namePositionSalary | Vice Principal |
-      | shortName          | V.Pri          |
+      | name      | Vice Principal |
+      | shortName | V.Pri          |
 
     And User click on the element in the dialog content class
       | saveButton |

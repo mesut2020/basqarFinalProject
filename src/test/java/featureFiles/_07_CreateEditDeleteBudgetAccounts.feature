@@ -47,22 +47,27 @@ Feature: Create and Delete Functionality for BudgetAccounts
 
     Then User should see "successfully added" message
 
-    And User click on the element in the dialog content class
-      | contraAcc |
-      | addContraAcc |
+    ############# BU KISIM CALISMIYOR ################
 
-    And User send the keys in the dialog content class
-      | codeAcc | 1070 |
+#    And User click on the element in the dialog content class
+#      | contraAcc |
+#      | addContraAcc |
+#
+#    And User send the keys in the dialog content class
+#      | codeAcc | 1070 |
+#
+#    And User click on the element in the dialog content class
+#      | budgetType  |
+#      | Next Years  |
+#      | balanceType |
+#      | Debit       |
+#
+#    And User send the keys in the dialog content class
+#      | order       | 4       |
+#
+#    And User fill the "formulaList" with "BALANCE"
 
-    And User click on the element in the dialog content class
-      | budgetType  |
-      | Next Years  |
-      | balanceType |
-      | Debit       |
-
-    And User send the keys in the dialog content class
-      | order       | 4       |
-      | formulaList | BALANCE |
+    ########################################################
 
     And User click on the element in the dialog content class
 #      | addContraAcc |

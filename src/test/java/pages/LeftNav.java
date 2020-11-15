@@ -16,12 +16,12 @@ public class LeftNav extends _Parent {
 
     @FindBy(linkText = "Setup") private WebElement setup;
     @FindBy(linkText = "Parameters") private WebElement parameters;
-    @FindBy(linkText = "Countries") private WebElement countries;
+    @FindBy(css = "a[href='/countries/list']") private WebElement countries;   //   linkText = "Countries"  // linkText de scroll yapmiyor
     @FindBy(linkText = "Cities") private WebElement cities;
 
     @FindBy(linkText = "Education") private WebElement education;
     @FindBy(xpath = "(//span[text()='Setup'])[5]") private WebElement setupEducation;
-    @FindBy(linkText = "Subject Categories") private WebElement subjectCategories;
+    @FindBy(css = "a[href='/subject-categories/list']") private WebElement subjectCategories;   //   linkText = "Subject Categories"
     @FindBy(linkText = "Subjects") private WebElement subjects;
 
     @FindBy(linkText = "Human Resources") private WebElement humanResources;

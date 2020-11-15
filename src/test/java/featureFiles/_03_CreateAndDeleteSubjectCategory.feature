@@ -98,7 +98,6 @@ Feature: Create and Delete Functionality for Subject Categories
 
     Then User should see "successfully created" message
 
-# Parent daki scroll dan dolayi burayi goremedi
     When User click on the element in the leftNav class
       | subjectCategories |
 

@@ -9,7 +9,7 @@ import pages.LeftNav;
 
 import java.util.List;
 
-public class _03_EditSteps {
+public class _03_EditAndFillFormSteps {
 
     DialogContent dialogContent= new DialogContent();
     LeftNav leftNav = new LeftNav();

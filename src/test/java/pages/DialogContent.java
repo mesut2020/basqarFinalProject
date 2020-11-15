@@ -36,9 +36,10 @@ public class DialogContent extends _Parent{
     @FindAll({ @FindBy (css = "tbody>tr>td:nth-child(2)") })  private List<WebElement> nameList;
     @FindBy(css = "button[type='submit']")    private WebElement yesButton;
     @FindBy(css = "mat-select[formcontrolname='id']")    private WebElement country;
-    @FindBy(css = "input.mat-input-element.mat-form-field-autofill-control") private WebElement searchName;
+    @FindBy(css = "input.mat-input-element.mat-form-field-autofill-control") WebElement searchName;
     @FindBy(css = "button[class='mat-focus-indicator mat-raised-button mat-button-base mat-accent']") private WebElement searchButton;
     @FindAll({ @FindBy(css = "mat-option[role='option']>span") }) private List<WebElement> optionsList;
+    @FindBy(css = "mat-option[role='option']>span") private WebElement option;
     /////////////////////////////// subjects
     @FindBy(css = "mat-select[formcontrolname='id']")    private WebElement subjectCategory;
     @FindBy(css = "mat-select[formcontrolname='value']")    private WebElement style;
@@ -46,6 +47,8 @@ public class DialogContent extends _Parent{
     @FindBy (css = "ms-text-field[formcontrolname='title']>input")    private WebElement namePositionSalary;
     @FindBy(css = "ms-text-field[formcontrolname='shortName']>input")    private WebElement shortName;
     /////////////////////////////// Excel Template
+    @FindBy(css = "ms-integer-field[formcontrolname='periodCount']>input")    private WebElement periodCount;
+    @FindBy(css = "div[role='tab'][aria-posinset='2']")  private WebElement exelTempVerTab;
     @FindBy(css = "ms-integer-field[formcontrolname='rowSize']>input")    private WebElement rowSize;
     @FindBy(css = "ms-integer-field[formcontrolname='columnSize']>input")    private WebElement columnSize;
     @FindBy(css = "ms-button>button") private WebElement addVersionButton;
@@ -84,7 +87,6 @@ public class DialogContent extends _Parent{
     @FindBy (css = "input[placeholder='Expense accout code prefixes']")    private WebElement expenseAccPrefixes;
     @FindBy (xpath = "//mat-icon[text()='cancel']")    private WebElement cancelExpenseAccPrefixes;
 
-
     @FindBy (css = "ms-button>button")    private WebElement addCost;
     @FindBy (css = "div[aria-posinset='2']")    private WebElement tabConstants;
 
@@ -108,10 +110,10 @@ public class DialogContent extends _Parent{
 
             case "addVersionButton": myElement = addVersionButton; break;
             case "closeDialogWindow": myElement = closeDialogWindow; break;
+            case "exelTempVerTab": myElement = exelTempVerTab; break;
 
             case "userType": myElement = userType; break;
             case "cancelUserType": myElement = cancelUserType; break;
-            case "namePositionSalary": myElement = namePositionSalary; break;
 
             case "openCalendar": myElement = openCalendar; break;
             case "validFrom": myElement = validFrom; break;
@@ -135,13 +137,8 @@ public class DialogContent extends _Parent{
 
             case "randomSelect": myElement=randomSelectFromList(optionsList);break;
 
-            default:
-                for (int i = 0; i < optionsList.size() ; i++) {
-                    if(optionsList.get(i).getText().equalsIgnoreCase(elementName)) {
-                        System.out.println("selected option:" + optionsList.get(i).getText());
-                        myElement = optionsList.get(i);break;
-                    }
-                }
+            default: myElement= selectItemFromList(optionsList, elementName); break;
+//
         }
         clickFunction(myElement);
     }
@@ -152,9 +149,12 @@ public class DialogContent extends _Parent{
             case "password": myElement = password; break;
             case "name": myElement = name; break;
             case "code": myElement = code; break;
-            ///////////////////////////////////////
+
+            case "namePositionSalary": myElement = namePositionSalary; break;
+
             case "shortName": myElement = shortName; break;
 
+            case "periodCount": myElement = periodCount; break;
             case "rowSize": myElement = rowSize; break;
             case "columnSize": myElement = columnSize; break;
 
@@ -169,7 +169,6 @@ public class DialogContent extends _Parent{
             case "valueConstans": myElement = valueConstans; break;
             /////////////////////////////////////////
             case "orderNo": myElement = orderNo; break;
-            //TODO not: order no eşsiz olmalı, listeli bulunmamalı
 
         }
         sendKeysFunction(myElement, value);
@@ -177,7 +176,7 @@ public class DialogContent extends _Parent{
 
     public void findElementListsAndFill(String listName, String value) {
         switch (listName) {
-            case "formulaList": sendKeysFunction(formulaList, value); break;
+            case "formulaList": fillElementsListWithRandomValue(formulaList, value); break;
         }
     }
 
@@ -197,19 +196,25 @@ public class DialogContent extends _Parent{
     }
 
     public void deleteItemFunction(String value){
-        boolean found = false;
+        boolean notFound = true;
 
+        int index = findIndexOfElementFromList(nameList, value, searchName, searchButton);
+        clickFunction(deleteButtonList.get(index));
+
+  /*
         for (int i = 0; i < nameList.size(); i++) {
             if(nameList.get(i).getText().equalsIgnoreCase(value)) {
                 System.out.println(nameList.get(i).getText() + " has been found...");
-                clickFunction(deleteButtonList.get(i));found=true; break;
+                clickFunction(deleteButtonList.get(i));notFound=false; break;
             }
         }
-        if(!found) {
+        if(notFound) {
+            System.out.println(" has been not found!!!");
             sendKeysFunction(searchName, value);
             clickFunction(searchButton);
             deleteItemFunction(value);
         }
+        */
         clickFunction(yesButton);
     }
 

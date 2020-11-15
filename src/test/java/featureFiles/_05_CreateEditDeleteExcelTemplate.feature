@@ -20,7 +20,8 @@ Feature: Create, Edit and Delete Functionality for Excel Template
       | addButton |
 
     And User send the keys in the dialog content class
-      | name | LessonsTemp |
+      | name        | LessonsTemp |
+      | periodCount | 2           |
 
     And User click on the element in the dialog content class
       | saveButton |
@@ -28,7 +29,7 @@ Feature: Create, Edit and Delete Functionality for Excel Template
     Then User should see "successfully created" message
 
     When User send the keys in the dialog content class
-      | rowSize    | 2 |
+      | rowSize    | 2  |
       | columnSize | 10 |
 
     And User click on the element in the dialog content class
@@ -43,10 +44,19 @@ Feature: Create, Edit and Delete Functionality for Excel Template
     When User edit "LessonsTemp"
 
     And User send the keys in the dialog content class
-      | name | editedLessonsTemp |
+      | name        | editedLessonsTemp |
+      | periodCount | 4                 |
 
     And User click on the element in the dialog content class
-      | saveButton       |
+      | exelTempVerTab |
+
+    When User edit "1"
+    When User send the keys in the dialog content class
+      | rowSize    | 2  |
+      | columnSize | 10 |
+
+    And User click on the element in the dialog content class
+      | saveButton        |
 
     Then User should see "successfully updated" message
 

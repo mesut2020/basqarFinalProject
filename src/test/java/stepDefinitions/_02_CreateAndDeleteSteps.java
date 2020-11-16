@@ -21,18 +21,10 @@ public class _02_CreateAndDeleteSteps {
         }
     }
 
-//    @When("^User delete value$")
-//    public void userDeleteValue(DataTable values) {
-//        List<String> valuesList = values.asList(String.class);
-//        for (int i = 0; i < valuesList.size(); i++) {
-//            dialogContent.deleteItemFunction(valuesList.get(i));
-//
-//        }
-//    }
-
     @When("^User delete \"([^\"]*)\"$")
     public void userDelete(String value) {
         dialogContent.deleteItemFunction(value);
+        dialogContent.findElementAndClickFunction("yesButton");
     }
 
     @Then("^User should see \"([^\"]*)\" message$")

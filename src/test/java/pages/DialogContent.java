@@ -1,11 +1,9 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -73,15 +71,18 @@ public class DialogContent extends _Parent{
     @FindBy (css = "mat-select[formcontrolname='category']") private WebElement category;
     @FindBy (xpath = "//span[text()='Subcategory']") private WebElement subcategory;
     @FindBy (css = "mat-select[formcontrolname='type']") private WebElement type;
-    @FindBy (xpath = "//span[text()='Balance Type']") private WebElement balanceType;
     @FindBy (xpath = "//span[text()='Integration Codes']") private WebElement integrationCodes;
     @FindBy (css = "mat-select[formcontrolname='currency']") private WebElement currency;
     @FindBy (xpath = "(//mat-expansion-panel-header[@role='button']/span)[1]")    private WebElement formula;
-    @FindBy (xpath = "(//div[@cdk-overlay-origin])[5]")    private WebElement budgetType;
     @FindAll({ @FindBy (css = "input[name*='Formula']") })  private List<WebElement> formulaList;
     //@FindBy (css = "ms-save-button.ng-star-inserted")  private WebElement saveFormulaList;
     @FindBy (xpath = "(//mat-expansion-panel-header[@role='button']/span)[3]")    private WebElement contraAcc;
     @FindBy (xpath = "(//ms-add-button[contains(tooltip,TITLE)])[2]")    private WebElement addContraAcc;
+    @FindBy (css = "input[data-placeholder='Account Code']")    private WebElement codeAcc;
+    @FindBy (css = "mat-select[formcontrolname='budgetType']")    private WebElement budgetType;
+    @FindBy (css = "mat-select[formcontrolname='balanceType']")    private WebElement balanceType1;
+    @FindBy (xpath = "(//mat-select[@formcontrolname='balanceType'])[2]")    private WebElement balanceType2;
+    @FindBy (css = "input[formcontrolname='order']")    private WebElement order;
 
     @FindBy (css = "ms-text-field[formcontrolname='orderNo']>input") private WebElement orderNo;
     @FindBy (css = "input[placeholder='Expense accout code prefixes']")    private WebElement expenseAccPrefixes;
@@ -122,7 +123,8 @@ public class DialogContent extends _Parent{
             case "category": myElement = category; break;
             case "subcategory": myElement = subcategory; break;
             case "type": myElement = type; break;
-            case "balanceType": myElement = balanceType; break;
+            case "balanceType1": myElement = balanceType1; break;
+            case "balanceType2": myElement = balanceType2; break;
             case "integrationCodes": myElement = integrationCodes; break;
             case "currency": myElement = currency; break;
             case "expenseAccPrefixes": myElement = expenseAccPrefixes; break;
@@ -167,6 +169,8 @@ public class DialogContent extends _Parent{
             case "validFrom": myElement = validFrom; break;
             case "key": myElement = key; break;
             case "valueConstans": myElement = valueConstans; break;
+            case "codeAcc": myElement = codeAcc; break;
+            case "order": myElement = order; break;
             /////////////////////////////////////////
             case "orderNo": myElement = orderNo; break;
 
@@ -176,7 +180,8 @@ public class DialogContent extends _Parent{
 
     public void findElementListsAndFill(String listName, String value) {
         switch (listName) {
-            case "formulaList": fillElementsListWithRandomValue(formulaList, value); break;
+            case "formulaList": fillElementsListWithRandomValue(formulaList, value);
+            break;
         }
     }
 
@@ -185,10 +190,9 @@ public class DialogContent extends _Parent{
             case "dashboard": myElement = dashboard;break;
             case "success/error": myElement = message;break;
         }
-        //if(myElement.getText().length()>0)
         verifyElementContainsText(myElement, mesaj);
         // mesajin kaybolmasi icin
-        if(!elementName.equalsIgnoreCase("dashboard"))
+        if(elementName.equals("success/error"))
             if (!messagesList.isEmpty())
                 if(message.getText().length()>0)
                     clickFunction(message);
@@ -196,43 +200,46 @@ public class DialogContent extends _Parent{
     }
 
     public void deleteItemFunction(String value){
-        boolean notFound = true;
+        //boolean notFound = true;
 
         int index = findIndexOfElementFromList(nameList, value, searchName, searchButton);
         clickFunction(deleteButtonList.get(index));
 
-  /*
-        for (int i = 0; i < nameList.size(); i++) {
-            if(nameList.get(i).getText().equalsIgnoreCase(value)) {
-                System.out.println(nameList.get(i).getText() + " has been found...");
-                clickFunction(deleteButtonList.get(i));notFound=false; break;
-            }
-        }
-        if(notFound) {
-            System.out.println(" has been not found!!!");
-            sendKeysFunction(searchName, value);
-            clickFunction(searchButton);
-            deleteItemFunction(value);
-        }
-        */
-        clickFunction(yesButton);
+//        for (int i = 0; i < nameList.size(); i++) {
+//            if(nameList.get(i).getText().equalsIgnoreCase(value)) {
+//                System.out.println(nameList.get(i).getText() + " has been found...");
+//                clickFunction(deleteButtonList.get(i));notFound=false; break;
+//            }
+//        }
+//        if(notFound) {
+//            System.out.println(" has been not found!!!");
+//            sendKeysFunction(searchName, value);
+//            clickFunction(searchButton);
+//            deleteItemFunction(value);
+//        }
     }
 
     public void editItemFunction(String currentValue){
-        boolean notFound = true;
+//        boolean notFound = true;
 
-        for (int i = 0; i < nameList.size(); i++) {
-            if(nameList.get(i).getText().equalsIgnoreCase(currentValue)) {
-                System.out.println(nameList.get(i).getText() + " has been found...");
-                clickFunction(editButtonList.get(i)); notFound = false; break;
-            }
-        }
-        if(notFound) { // ilk sayfa da yok ise search de aramak icin
-            sendKeysFunction(searchName, currentValue);
-            clickFunction(searchButton);
-            editItemFunction(currentValue);
-        }
+        int index = findIndexOfElementFromList(nameList, currentValue, searchName, searchButton);
+        clickFunction(editButtonList.get(index));
+
+
+//        for (int i = 0; i < nameList.size(); i++) {
+//            if(nameList.get(i).getText().equalsIgnoreCase(currentValue)) {
+//                System.out.println(nameList.get(i).getText() + " has been found...");
+//                clickFunction(editButtonList.get(i)); notFound = false; break;
+//            }
+//        }
+//        if(notFound) { // ilk sayfa da yok ise search de aramak icin
+//            sendKeysFunction(searchName, currentValue);
+//            clickFunction(searchButton);
+//            editItemFunction(currentValue);
+//        }
     }
+
+
 
     public void searchNotFoundItem(String value){
 

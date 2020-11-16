@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utilities.Driver;
@@ -38,8 +37,8 @@ public class _Parent {
     }
 
     public void clickFunction(WebElement element) {
-        waitUntilVisible(element);
         scrollToElement(element);
+        waitUntilVisible(element);
         waitUntilClickable(element);
         element.click();
     }
@@ -54,6 +53,7 @@ public class _Parent {
     public void fillElementsListWithRandomValue(List<WebElement> elementsList, String value) {
         Actions actions = new Actions(driver);
         actions.click(elementsList.get(0)).build().perform();
+        elementsList.get(0).clear();
         for (int i = 0; i < elementsList.size(); i++) {
             actions.sendKeys(value + "*" + (Math.random() * 1 + 1) + Keys.TAB + Keys.TAB).build().perform();
         }
@@ -77,7 +77,7 @@ public class _Parent {
     public WebElement selectItemFromList(List<WebElement> elementsList, String value) {
         int i=elementsList.size()-1;
         for ( ; i >=0; i--) {
-            if (elementsList.get(i).getText().equalsIgnoreCase(value)) {
+            if (elementsList.get(i).getText().contains(value)) {
                 System.out.println("selected option:" + elementsList.get(i).getText());
                 break;
             }
@@ -94,7 +94,7 @@ public class _Parent {
         }
             sendKeysFunction(searchName, value);
             clickFunction(searchButton);
-            return 0;
+            return findIndexOfElementFromList(elementsList, value, searchName, searchButton);
     }
 
 }

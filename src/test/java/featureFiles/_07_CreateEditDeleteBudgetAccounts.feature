@@ -9,7 +9,7 @@ Feature: Create and Delete Functionality for BudgetAccounts
 
     And User click on the element in the dialog content class
       | loginButton |
-      | gotItBtn |
+      | gotItBtn    |
 
     Then User should login successfully
 
@@ -22,22 +22,22 @@ Feature: Create and Delete Functionality for BudgetAccounts
       | addButton |
 
     And User send the keys in the dialog content class
-      | code | 2.1.3    |
+      | code | 2.0.0    |
       | name | Personal |
 
     And User click on the element in the dialog content class
-      | type        |
-      | Group       |
-      | category    |
-      | Expense     |
-      | balanceType |
-      | Debit       |
-      | currency    |
-      | EUR         |
-      | formula     |
-      | addButton   |
-      | budgetType  |
-      | Current     |
+      | type         |
+      | Group        |
+      | category     |
+      | Expense      |
+      | balanceType1 |
+      | Debit        |
+      | currency     |
+      | EUR          |
+      | formula      |
+      | addButton    |
+      | budgetType   |
+      | Current      |
 
     And User fill the "formulaList" with "JAN"
 
@@ -47,31 +47,26 @@ Feature: Create and Delete Functionality for BudgetAccounts
 
     Then User should see "successfully added" message
 
-    ############# BU KISIM CALISMIYOR ################
+    And User click on the element in the dialog content class
+      | contraAcc    |
+      | addContraAcc |
 
-#    And User click on the element in the dialog content class
-#      | contraAcc |
-#      | addContraAcc |
-#
-#    And User send the keys in the dialog content class
-#      | codeAcc | 1070 |
-#
-#    And User click on the element in the dialog content class
-#      | budgetType  |
-#      | Next Years  |
-#      | balanceType |
-#      | Debit       |
-#
-#    And User send the keys in the dialog content class
-#      | order       | 4       |
-#
-#    And User fill the "formulaList" with "BALANCE"
-
-    ########################################################
+    And User send the keys in the dialog content class
+      | codeAcc | 1070 |
 
     And User click on the element in the dialog content class
-#      | addContraAcc |
-      | saveButton   |
+      | budgetType   |
+      | Next Years   |
+      | balanceType2 |
+      | Debit        |
+
+    And User send the keys in the dialog content class
+      | order | 4 |
+
+    And User fill the "formulaList" with "BALANCE"
+
+    And User click on the element in the dialog content class
+      | saveButton |
 
     Then User should see "successfully created" message
 
@@ -93,6 +88,6 @@ Feature: Create and Delete Functionality for BudgetAccounts
       | budget         |
       | budgetAccounts |
 
-    And User delete "editedPersonal"
+    And User delete "development of educational activities"
 
     Then User should see "successfully deleted" message

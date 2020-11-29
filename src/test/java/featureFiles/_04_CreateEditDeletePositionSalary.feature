@@ -1,6 +1,6 @@
-Feature: Create, Edit and Delete Functionality for Position Salary
+Feature: Create, Edit and Delete Functionality for Position Salary and Position
 
-  Background:
+  Scenario: Create, Edit and Delete a Position Salary
     Given Navigate to basqar
     When User send the keys in the dialog content class
       | username | daulet2030@gmail.com |
@@ -10,7 +10,6 @@ Feature: Create, Edit and Delete Functionality for Position Salary
       | gotItBtn    |
     Then User should login successfully
 
-  Scenario: Create, Edit and Delete a Position Salary
     When User click on the element in the leftNav class
       | humanResources |
       | setupHR        |
@@ -44,8 +43,6 @@ Feature: Create, Edit and Delete Functionality for Position Salary
 
   Scenario: Create, Edit and Delete a Position
     When User click on the element in the leftNav class
-      | humanResources |
-      | setupHR        |
       | positions      |
 
     And User click on the element in the dialog content class

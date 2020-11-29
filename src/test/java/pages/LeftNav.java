@@ -29,9 +29,9 @@ public class LeftNav extends _Parent {
     @FindBy(linkText = "Position Salary") private WebElement positionSalary;
     @FindBy(linkText = "Positions") private WebElement positions;
 
-    @FindBy(linkText = "Salary Types") private WebElement salaryTypes;
-    @FindBy(linkText = "Salary Modifiers") private WebElement salaryModifiers;
-    @FindBy(linkText = "Salary Constants") private WebElement salaryConstants;
+    @FindBy(xpath = "//span[text()='Salary Types']") private WebElement salaryTypes;
+    @FindBy(xpath = "//span[text()='Salary Modifiers']") private WebElement salaryModifiers;
+    @FindBy(xpath = "//span[text()='Salary Constants']") private WebElement salaryConstants;
 
     @FindBy(xpath = "(//span[text()='Reports'])[4]") private WebElement reports;
     @FindBy(xpath = "(//span[text()='Setup'])[7]") private WebElement setupReports;

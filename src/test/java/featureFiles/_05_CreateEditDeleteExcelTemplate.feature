@@ -1,6 +1,6 @@
 Feature: Create, Edit and Delete Functionality for Excel Template
 
-  Background:
+  Scenario: Create, Edit and Delete an Excel Template
     Given Navigate to basqar
     When User send the keys in the dialog content class
       | username | daulet2030@gmail.com |
@@ -10,7 +10,6 @@ Feature: Create, Edit and Delete Functionality for Excel Template
       | gotItBtn    |
     Then User should login successfully
 
-  Scenario: Create, Edit and Delete an Excel Template
     When User click on the element in the leftNav class
       | reports       |
       | setupReports  |

@@ -1,6 +1,6 @@
 Feature: Create, Edit and Delete Functionality for Salary Types, Modifiers and Constants
 
-  Background:
+  Scenario: Create, Edit and Delete Salary Types
     Given Navigate to basqar
     When User send the keys in the dialog content class
       | username | daulet2030@gmail.com |
@@ -10,7 +10,6 @@ Feature: Create, Edit and Delete Functionality for Salary Types, Modifiers and C
       | gotItBtn    |
     Then User should login successfully
 
-  Scenario: Create, Edit and Delete Salary Types
     When User click on the element in the leftNav class
       | humanResources |
       | setupHR        |
@@ -49,8 +48,6 @@ Feature: Create, Edit and Delete Functionality for Salary Types, Modifiers and C
 
   Scenario: Create, Edit and Delete Salary Modifiers
     When User click on the element in the leftNav class
-      | humanResources  |
-      | setupHR         |
       | salaryModifiers |
 
     And User click on the element in the dialog content class
@@ -95,11 +92,9 @@ Feature: Create, Edit and Delete Functionality for Salary Types, Modifiers and C
     Then User should see "successfully deleted" message
 
 
-  Scenario: Create and Edit Salary Constants
+  Scenario: Create, Edit and Delete Salary Constants
 
     When User click on the element in the leftNav class
-      | humanResources  |
-      | setupHR         |
       | salaryConstants |
 
     And User click on the element in the dialog content class
@@ -132,13 +127,6 @@ Feature: Create, Edit and Delete Functionality for Salary Types, Modifiers and C
       | saveButton |
 
     Then User should see "successfully updated" message
-
-  Scenario: Delete Salary Constants
-
-    When User click on the element in the leftNav class
-      | humanResources  |
-      | setupHR         |
-      | salaryConstants |
 
     When User delete "Mindestlohn"
 

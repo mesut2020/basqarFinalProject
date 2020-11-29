@@ -1,6 +1,6 @@
 Feature: Create and Delete Functionality for Countries and Cities
 
-  Background:
+  Scenario: Create and Delete a Country
     Given Navigate to basqar
     When User send the keys in the dialog content class
       | username | daulet2030@gmail.com |
@@ -10,7 +10,6 @@ Feature: Create and Delete Functionality for Countries and Cities
       | gotItBtn    |
     Then User should login successfully
 
-  Scenario: Create and Delete a Country
     When User click on the element in the leftNav class
       | setup      |
       | parameters |
@@ -35,8 +34,6 @@ Feature: Create and Delete Functionality for Countries and Cities
 
   Scenario: Create and Delete a City
     When User click on the element in the leftNav class
-      | setup      |
-      | parameters |
       | cities     |
 
     And User click on the element in the dialog content class
@@ -58,10 +55,8 @@ Feature: Create and Delete Functionality for Countries and Cities
     Then User should see "successfully deleted" message
 
 
-  Scenario: Create a Country and a city and delete Country
+  Scenario: Create a Country and a city and try to delete the Country
     When User click on the element in the leftNav class
-      | setup      |
-      | parameters |
       | countries  |
 
     And User click on the element in the dialog content class

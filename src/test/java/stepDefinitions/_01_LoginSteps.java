@@ -7,7 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pages.DialogContent;
-import utilities.Driver;
+import utilities.DriverPrevious;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +17,7 @@ public class _01_LoginSteps {
     WebDriver driver;
     @Given("^Navigate to basqar$")
     public void navigateToBasqar() {
-        driver = Driver.getDriver();
+        driver = DriverPrevious.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

@@ -1,6 +1,6 @@
 Feature: Create and Delete Functionality for BudgetAccounts
 
-  Background:
+  Scenario:  Create, Edit and Delete a Budget Account
     Given Navigate to basqar
 
     When User send the keys in the dialog content class
@@ -13,7 +13,6 @@ Feature: Create and Delete Functionality for BudgetAccounts
 
     Then User should login successfully
 
-  Scenario:  Create, Edit and Delete a Budget Account
     When User click on the element in the leftNav class
       | budget         |
       | budgetAccounts |

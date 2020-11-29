@@ -1,6 +1,6 @@
 Feature: Create and Delete Functionality for Subject Categories
 
-  Background:
+  Scenario: Create and Delete a Subject Category
     Given Navigate to basqar
     When User send the keys in the dialog content class
       | username | daulet2030@gmail.com |
@@ -10,7 +10,6 @@ Feature: Create and Delete Functionality for Subject Categories
       | gotItBtn    |
     Then User should login successfully
 
-  Scenario: Create and Delete a Subject Category
     When User click on the element in the leftNav class
       | education         |
       | setupEducation    |
@@ -35,8 +34,6 @@ Feature: Create and Delete Functionality for Subject Categories
 
   Scenario: Create and Delete a Subject
     When User click on the element in the leftNav class
-      | education      |
-      | setupEducation |
       | subjects       |
 
     And User click on the element in the dialog content class
@@ -60,10 +57,8 @@ Feature: Create and Delete Functionality for Subject Categories
     Then User should see "successfully deleted" message
 
 
-  Scenario: Create a Subject Category and a Subject and try to delete a Subject Category
+  Scenario: Create a Subject Category and a Subject and try to delete the Subject Category
     When User click on the element in the leftNav class
-      | education         |
-      | setupEducation    |
       | subjectCategories |
 
     And User click on the element in the dialog content class
@@ -105,7 +100,7 @@ Feature: Create and Delete Functionality for Subject Categories
 
     Then User should see "error" message
 
-#    Silinmeyen subject category ve subject silindi
+#   Subjects and subjectCategory are deleted
     When User click on the element in the leftNav class
       | subjects |
     Then User delete "Chemistry102"

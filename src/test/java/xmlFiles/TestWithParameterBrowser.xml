@@ -1,0 +1,10 @@
+<suite name="Test basqar functionality" >
+
+    <test name="test1 with Firefox">
+        <parameter name="browser" value="firefox"> </parameter>
+        <classes>
+            <class name="runners._01_ExtendReports"> </class>
+        </classes>
+    </test>
+
+</suite>

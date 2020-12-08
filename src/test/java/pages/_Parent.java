@@ -5,7 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utilities.DriverPrevious;
+import utilities.Driver;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class _Parent {
     WebDriverWait wait;
 
     public _Parent() {
-        driver = DriverPrevious.getDriver();
+        driver = Driver.getDriver();
         wait = new WebDriverWait(driver, 10);
     }
 

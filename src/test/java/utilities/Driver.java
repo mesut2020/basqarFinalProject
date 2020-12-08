@@ -10,15 +10,12 @@ public class Driver {
     private static ThreadLocal<WebDriver> threadDriver =new ThreadLocal<>();
     public static ThreadLocal<String> threadBrowserName= new ThreadLocal<>();
 
-    public static WebDriver getDriver()
-    {
-        if (threadBrowserName.get()==null)
-        {
+    public static WebDriver getDriver() {
+        if (threadBrowserName.get()==null) {
             threadBrowserName.set("firefox");
         }
 
-        if (threadDriver.get() == null)
-        {
+        if (threadDriver.get() == null) {
             switch (threadBrowserName.get())
             {
                 case "chrome":
@@ -30,8 +27,6 @@ public class Driver {
                     WebDriverManager.firefoxdriver().setup();
                     threadDriver.set( new FirefoxDriver() );
                     break;
-
-
             }
         }
         return threadDriver.get();
@@ -39,6 +34,7 @@ public class Driver {
 
     public static void quitDriver()
     {
+        System.out.println(threadDriver.get());
         if (threadDriver.get() != null)
         {
             threadDriver.get().quit();
@@ -47,7 +43,5 @@ public class Driver {
             threadDriver.set(driver);
         }
     }
-
-
 
 }
